@@ -1,10 +1,10 @@
-#!/usr/bin/node
-// searches the second biggest integer in the list of arguments.
+const numArgs = process.argv.length - 2;
 
-if (process.argv.length <= 3) {
+if (numArgs <= 1) {
   console.log(0);
 } else {
-  const arg = parseInt(process.argv)
-  const list = arg.sort();
-  console.log(list.reverse()[1]);
+  const integers = process.argv.slice(2).map(arg => parseInt(arg, 10));
+  integers.sort((a, b) => b - a);
+
+  console.log(integers[1]);
 }
